@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance = null;
+
+    bool ishome = true;
 
     public static SoundManager GetInstance()
     {
@@ -38,22 +41,37 @@ public class SoundManager : MonoBehaviour
         if (seSlider != null && bgmSlider != null)
         {
             seSlider.onValueChanged.AddListener(delegate { OnSEVolumeChange(); });
-            seSlider.onValueChanged.AddListener(delegate { OnSEVolumeChange(); });
+            bgmSlider.onValueChanged.AddListener(delegate { OnBGMVolumeChange(); });
 
         }
+        PlayBGM(0);
     }
 
 
     private void Update()
     {
-        if(seSlider != null &&bgmSlider != null)
+
+        //デバッグ用
+        if (Input.GetKeyDown("o"))
         {
-            seSlider = GameObject.Find("Canvas/Slider").GetComponent<Slider>();
-            bgmSlider=GameObject.Find("Canvas/Slider").GetComponent <Slider>();
-            seSlider.onValueChanged.AddListener(delegate { OnSEVolumeChange(); });
-            bgmSlider.onValueChanged.AddListener(delegate { OnBGMVolumeChange(); });
-            seSlider.value = seVolume;
-            bgmSlider.value = bgmVolume;
+            ishome = !ishome;
+        }
+
+        Debug.Log(ishome);
+
+
+
+        if (!ishome)
+        {
+            if (seSlider == null && bgmSlider == null)
+            {
+                seSlider = GameObject.Find("Canvas/Slider1").GetComponent<Slider>();
+                bgmSlider = GameObject.Find("Canvas/Slider2").GetComponent<Slider>();
+                seSlider.onValueChanged.AddListener(delegate { OnSEVolumeChange(); });
+                bgmSlider.onValueChanged.AddListener(delegate { OnBGMVolumeChange(); });
+            }
+            seSlider.value = SEVolume;
+            bgmSlider.value = BGMVolume;
         }
 
     }
@@ -65,7 +83,7 @@ public class SoundManager : MonoBehaviour
     }
     public void OnBGMVolumeChange()
     {
-        audioSorceBGM.volume = seSlider.value;
+        audioSorceBGM.volume = bgmSlider.value;
         PlayerPrefs.SetFloat("BGMVolume", bgmVolume); // 保存
         PlayerPrefs.Save();
     }
@@ -80,4 +98,21 @@ public class SoundManager : MonoBehaviour
         get { return audioSorceSE.volume; }
         set { audioSorceSE.volume = value; }
     }
+
+    public void PlaySound(int index) //SE再生
+    {
+        audioSorceSE.PlayOneShot(seLists[index]);
+    }
+
+    public void PlayBGM(int index) //BGM再生
+    {
+        audioSorceBGM.clip = bgmLists[index];
+        audioSorceBGM.Play();
+    }
+
+    public void StopBGM() //BGM停止
+    {
+        audioSorceBGM.Stop();
+    }
+
 }
