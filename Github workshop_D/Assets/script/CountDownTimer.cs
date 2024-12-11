@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CountDownTimer : MonoBehaviour
 {
 
     public TextMeshProUGUI timerText;
 
+    public static bool isClear;
+
     [Header("制限時間")]
     public float timer;
+
+    [Header("クリアライン")]
+    public int clearScore;
+
+    private void Start()
+    {
+        isClear = false;
+    }
     void Update()
     {
         
@@ -20,11 +31,17 @@ public class CountDownTimer : MonoBehaviour
 
         if(timer <= 0)
         {
-        #if UNITY_EDITOR //unity内でゲーム時
-                    UnityEditor.EditorApplication.isPlaying = false;
-        #else //ビルドされたゲームの時
-                    Application.Quit();
-        #endif
+            if (sumSCP.sum >= clearScore)
+            {
+                Debug.Log("ゲームクリア");
+                isClear = true;
+            }
+            else
+            {
+                Debug.Log("ゲームオーバー");
+            }
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Result");
+
         }
 
     }
