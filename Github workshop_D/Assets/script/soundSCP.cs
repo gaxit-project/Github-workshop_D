@@ -19,6 +19,6 @@ public class soundSCP : MonoBehaviour
     }
     public void soundBotton()
     {
-        audiosource.PlayOneShot(countSound);
+        SoundManager.GetInstance().PlaySound(0);
     }
 }
