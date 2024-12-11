@@ -27,7 +27,7 @@ public class CountDownTimer : MonoBehaviour
         
         timer -= Time.deltaTime;
         // timer‚Ì•\¦‚ÌØ‚è‘Ö‚¦
-        timerText.text = timer.ToString("F0");
+        timerText.text = "Timer : " + timer.ToString("F0");
 
         if(timer <= 0)
         {
