@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Nextscenescript : MonoBehaviour
 {
-    public void LoadScene(string main)
+    public void LoadScene()
     {
-        SceneManager.LoadScene(main);
+        SceneManager.LoadScene("main");
     }
 }
