@@ -5,17 +5,20 @@ using TMPro;
 
 public class Clear : MonoBehaviour
 {
-    public TextMeshProUGUI text;
+    public TextMeshProUGUI textResult;
+    public TextMeshProUGUI textScore;
     void Start()
     {
-        if(CountDownTimer.isClear = true;)
+        if(CountDownTimer.isClear)
         {
-           text.text  = "ゲームクリア！";
+           textResult.text  = "Clear";
         }
         else
         {
-            text.text = "ゲームオーバー";
+            textResult.text = "GameOver";
         }
+
+        textScore.text = "Score " + sumSCP.sum.ToString();
     }
     
 
