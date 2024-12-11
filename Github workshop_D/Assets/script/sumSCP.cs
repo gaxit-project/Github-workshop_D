@@ -4,8 +4,10 @@ using UnityEngine;
 using TMPro;
 public class sumSCP : MonoBehaviour
 {
-    public int sum;
+    public static int sum;
     public TextMeshProUGUI count;
+
+    public CountDownTimer countDownTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +17,14 @@ public class sumSCP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         count.text = sum.ToString();
     }
     public void sumBotton()
     {
-        sum++;
+        if(countDownTimer != null && countDownTimer.timer > 0)
+        {
+            sum++;
+        }
     }
 }
