@@ -12,9 +12,11 @@ public class Clear : MonoBehaviour
         if(CountDownTimer.isClear)
         {
            textResult.text  = "Clear";
+            SoundManager.GetInstance().PlaySound(2);
         }
         else
         {
+            SoundManager.GetInstance().PlaySound(3);
             textResult.text = "GameOver";
         }
 
