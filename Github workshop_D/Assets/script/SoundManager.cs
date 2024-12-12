@@ -61,7 +61,7 @@ public class SoundManager : MonoBehaviour
 
 
 
-        if (!ishome)
+        if (!HomeSetting.isHome)
         {
             if (seSlider == null && bgmSlider == null)
             {

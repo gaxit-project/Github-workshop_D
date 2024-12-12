@@ -48,8 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seLists:
   - {fileID: 8300000, guid: 309f03cff9dd0c64abc2c754306d45f0, type: 3}
+  - {fileID: 8300000, guid: 7c84057d31c02e447a02043915528bd8, type: 3}
+  - {fileID: 8300000, guid: d6b95c37d54c7d546a33c7f9fdde1948, type: 3}
+  - {fileID: 8300000, guid: 0a7681f5999bd3f4a8a9933ab1ec442e, type: 3}
   bgmLists:
-  - {fileID: 8300000, guid: 309f03cff9dd0c64abc2c754306d45f0, type: 3}
+  - {fileID: 8300000, guid: 9e8c6ec95609cfd498a4395a26833225, type: 3}
   seSlider: {fileID: 0}
   bgmSlider: {fileID: 0}
   audioSorceSE: {fileID: 6723356273545514978}
